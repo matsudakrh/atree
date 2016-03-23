@@ -1,0 +1,99 @@
+@import 'component/common'
+
+body
+  background: lighten(#92c6c6, 20%)
+
+input
+  &[type="radio"]
+    position: fixed
+    top: -100%
+
+.active
+  display: block
+.hidden
+  display: none
+
+
+.title
+  position: absolute
+  top: 6%
+  right: 0
+  left: 0
+  margin: 0 auto
+  text-align: center
+  z-index: 100
+
+
+.subTitle
+  position: absolute
+  top: 18%
+  right: 0
+  left: 0
+  margin: 0 auto
+  text-align: center
+
+
+
+.card
+  position: absolute
+  background: #fff
+  width: 100%
+  height: 100%
+
+
+.aArea, .bArea
+  position: absolute
+  bottom: 0
+  width: 50%
+  height: 50%
+  label
+    position: absolute
+    font-size: 1.4em
+    display: table
+    box-sizing: border-box
+    width: 100%
+    height: 100%
+    text-align: center
+    span
+      text-align: center
+      vertical-align: middle
+      display: table-cell
+      box-sizing: border-box
+      padding: 1em
+
+.aArea
+  left: 0
+  background: #eec29f
+  &::after
+    content: "A"
+    font-size: 10em
+    position: absolute
+    left: -4%
+    bottom: 0
+    opacity: 0.6
+
+.bArea
+  right: 0
+  background: #85dcef
+  &::after
+    content: "B"
+    font-size: 10em
+    position: absolute
+    right: -4%
+    bottom: 0
+    opacity: 0.6
+
+.answerArea
+  width: 100%
+  height: 400px
+  position: relative
+  overflow: hidden
+
+.container
+  width: 80%
+  padding: 24px
+  margin: 0 auto
+  background: #fff
+
+
+

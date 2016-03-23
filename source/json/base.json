@@ -1,0 +1,46 @@
+{
+  "state": 200,
+  "message": "",
+  "data": [
+    {
+      "title": "好きな音楽について",
+      "url": "",
+      "created_ID": 323526,
+      "section_length": 4,
+      "question": [
+
+        [{
+          "question": "どちらが好みですか",
+          "selectA": "ロック",
+          "selectB": "クラシック"
+        }],
+        [{
+          "parentSelect": "A",
+          "question": "どちらが好みですか2",
+          "selectA": "j-pop",
+          "selectB": "ヒップホップ"
+        },{
+          "parentSelect": "B",
+          "question": "どちらが好みですか2",
+          "selectA": "ボサノバ",
+          "selectB": "フュージョン"
+        }],
+        [{
+          "question": "どちらが好みですか3",
+          "selectA": "ラップ",
+          "selectB": "ブルース"
+        }],
+        [{
+          "question": "どちらが好みですか4",
+          "selectA": "オペラ",
+          "selectB": "メタル"
+        },{
+          "question": "どちらが好みですか4",
+          "selectA": "ドラムンベース",
+          "selectB": "ユーロビート"
+        }]
+
+      ]
+    }
+  ]
+}
