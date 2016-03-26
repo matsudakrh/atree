@@ -26,8 +26,16 @@ module.exports = {
             error: {
                 errorHandler: notify.onError("Error: <%= error.message %>")
             },
-            prefix: {
-                browser: ['last 2 version']
+            cssnext: {
+                browsers: 'last 2 versions',
+                features: {
+                    customProperties: false,
+                    calc: true,
+                    customMedia: false,
+                    mediaQueriesRange: false,
+                    autoprefixer: true,
+                    import: true
+                }
             }
         },
         jade: {
