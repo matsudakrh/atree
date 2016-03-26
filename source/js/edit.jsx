@@ -1,36 +1,17 @@
 ;( function () {
 
 
-
-    //var Text = React.createClass({
-    //    getInitialState: function () {
-    //        return { text: "" };
-    //    },
-    //    onChangeText: function (e) {
-    //        this.setState({ text: e.target.value });
-    //    },
-    //    render: function () {
-    //        return (
-    //            <div>
-    //                <input type="text" value={this.state.text} onChange={this.onChangeText} />
-    //                <p>{this.state.text}</p>
-    //            </div>
-    //        );
-    //    }
-    //});
-    //ReactDOM.render(
-    //    <Text />,
-    //    document.getElementById('view')
-    //);
-
     var Forms = React.createClass({
+
         render: function () {
+
+            var clickEvent = this.props.clk;
+
+            //var self = this;
 
 
             console.log(this.props.sections);
-            var clkEvent = this.props.clk;
-
-            var sections = this.props.sections.map( function (judge, i) {
+            var sections = [].map.call(this.props.sections, function (judge, i) {
 
                 var questionName = "question" + i;
                 var selectAName = "selectA" + i;
@@ -43,8 +24,6 @@
 
                 var sections = [];
 
-                console.log(judge);
-
                 if ( judge > 0 && i > 0) {
                     return(
                         <div>
@@ -55,7 +34,7 @@
                             <label>選択肢：B<br />
                                 <input type="text" name={selectBName} /></label><br />
                             <div>
-                                <button type="button" onClick={clkEvent({i})}>分岐を追加</button>
+                                <button type="button" onClick={clickEvent(i)}>分岐を追加</button>
                             </div>
                         </div>
                     );
@@ -89,6 +68,9 @@
                                 <label>選択肢：B<br />
                                     <input type="text" name={selectBNameB} /></label><br />
                             </div>
+                            <div>
+                                <button type="button" onClick={clickEvent(i)}>分岐を削除</button>
+                            </div>
 
                         </div>
                     );
@@ -108,9 +90,15 @@
     var FormGroup = React.createClass({
         getInitialState: function () {
             return {
-                sections: ['a'],
+                sections: [],
                 count: 1
             };
+        },
+        componentWillMount: function () {
+            this.setState({
+                sections: [0],
+                count: 1
+            });
         },
         onSubmit: function (e) {
             e.preventDefault();
@@ -128,21 +116,54 @@
                 sections: this.state.sections.concat([num])
             });
 
-            console.log(this.state.sections[num]);
-
 
         },
-        onClickOther: function (i) {
+        onEventOther: function (i) {
 
-            if ( this.state.sections[i] ) {
-                this.setState({
-                    sections: this.state.sections[i] *= -1
+            var self = this;
+            var newSections = self.state.sections;
+
+
+
+
+            //newSections = [].slice.call(newSections);
+
+            //if ( sections[i] === '-1' ) {
+            //    newSections[i] = '1';
+            //
+            //} else {
+            //    newSections[i] = '-1';
+            //}
+
+
+
+
+
+
+            return function () {
+
+                if ( newSections[i] > 0 ) {
+                    newSections[i] = -1;
+                } else {
+                    newSections[i] = 1;
+                }
+                self.setState({
+                    sections: newSections
                 });
-            } else {
-                this.setState({
-                    sections: this.state.sections[i] *= -1
-                });
-            }
+                console.log(newSections);
+
+                //if ( sections[i] ) {
+                //    self.setState({
+                //        sections: newSections[i] = -1
+                //    });
+                //} else {
+                //    self.setState({
+                //        sections: newSections[i] = -1
+                //    });
+                //}
+
+            };
+
 
 
         },
@@ -151,7 +172,7 @@
                 <form onSubmit={this.onSubmit}>
                     <label for="title" className="titleLabel">タイトル</label>
                     <input type="text" id="title" className="titleField" name="title"/>
-                    <Forms formIndex={this.state.count} sections={this.state.sections} clk={this.onClickOther} />
+                    <Forms formIndex={this.state.count} sections={this.state.sections} clk={this.onEventOther} />
                     <button type="button" className="add-question" onClick={this.onClickBtn}>追加</button><br />
                 </form>
             );

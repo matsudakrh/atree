@@ -16,12 +16,12 @@
         }],
         [{
           "parentSelect": "A",
-          "question": "どちらが好みですか2",
+          "question": "どちらが好みですか2A",
           "selectA": "j-pop",
           "selectB": "ヒップホップ"
         },{
           "parentSelect": "B",
-          "question": "どちらが好みですか2",
+          "question": "どちらが好みですか2B",
           "selectA": "ボサノバ",
           "selectB": "フュージョン"
         }],
@@ -31,11 +31,11 @@
           "selectB": "ブルース"
         }],
         [{
-          "question": "どちらが好みですか4",
+          "question": "どちらが好みですか4A",
           "selectA": "オペラ",
           "selectB": "メタル"
         },{
-          "question": "どちらが好みですか4",
+          "question": "どちらが好みですか4B",
           "selectA": "ドラムンベース",
           "selectB": "ユーロビート"
         }]
