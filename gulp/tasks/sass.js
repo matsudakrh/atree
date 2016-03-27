@@ -6,21 +6,18 @@ var minify = require('gulp-cssmin');
 var rename = require('gulp-rename');
 var plumber = require('gulp-plumber');
 
-var config = require('../config').path;
-var option = require('../config').option;
-
-//sassのコンパイル
+var config = require('../config').option;
 
 gulp.task('sass', function(){
-    gulp.src( config.sourceDir + 'sass/**/*.sass')
-        .pipe(plumber( option.sass.error ))
+    gulp.src( config.sass.source )
+        .pipe(plumber( config.sass.error ))
         .pipe(sass())
-        .pipe(cssnext( option.sass.cssnext ))
+        .pipe(cssnext( config.sass.cssnext ))
         .pipe(comb())
-        .pipe(gulp.dest( config.publicDir + 'css'))
+        .pipe(gulp.dest( config.sass.public ))
         .pipe(minify())
         .pipe(rename({
             extname: '.min.css'
         }))
-        .pipe(gulp.dest( config.publicDir + 'css'));
+        .pipe(gulp.dest( config.sass.public ));
 });

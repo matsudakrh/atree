@@ -1,20 +1,19 @@
 var gulp = require("gulp");
 var jade = require('gulp-jade');
 var data = require('gulp-data');
-var config = require('../config').path;
-var option = require('../config').option;
+var config = require('../config').option;
 
 
 
-
-//jadeのコンパイル
 gulp.task('jade', function(){
-    gulp.src([ option.jade.base + '**/*.jade','!' + option.jade.base +  'component/*.jade'],
-        { base: option.jade.base }) //ディレクトリ構造を維持
+    gulp.src( config.jade.src,
+        { base: config.jade.base })
         .pipe( data( function (file) {
-        return { 'meta': require( option.meta.basePath + 'meta.json')}
-    }))
-        .pipe(jade( option.jade.option ))
-        .pipe(gulp.dest( config.publicDir ));
+            return {
+                'meta': require( config.meta.basePath )
+            }
+        }))
+        .pipe(jade( config.jade.option ))
+        .pipe(gulp.dest( config.jade.public ));
 });
 
