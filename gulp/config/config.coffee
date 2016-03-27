@@ -29,6 +29,8 @@ module.exports =
     sass:
       public: baseConfig.publicDir + 'css/'
       source: baseConfig.sourceDir + 'sass/**/*.sass'
+      error:
+        errorHandler: notify.onError("Error: <%= error.message %>")
       cssnext:
         browser: 'last 2 versions'
         features:
