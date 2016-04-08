@@ -1,19 +1,47 @@
 ; ( function ($) {
     var drawAtree = function (data) {
+
         var Dist = React.createClass({
+
             render: function () {
+
                 var Nodes = this.props.data.map(function (obj, i) {
-                    return (
-                        <div>
-                            <h3>{obj.question}</h3>
 
+                    console.log(obj);
+
+                    if ( obj[1] ) {
+                        return (
                             <div>
-                                <h3>{obj.selectA}</h3>
+                                <h3>{obj[0].question}</h3>
 
-                                <h3>{obj.selectB}</h3>
+                                <div>
+                                    <h3>{obj[0].selectA}</h3>
+
+                                    <h3>{obj[0].selectB}</h3>
+                                </div>
+                                <h3>{obj[1].question}</h3>
+                                <div>
+                                    <h3>{obj[1].selectA}</h3>
+
+                                    <h3>{obj[1].selectB}</h3>
+                                </div>
                             </div>
-                        </div>
-                    );
+                            );
+                    } else {
+
+                        return (
+                            <div>
+                                <h3>{obj[0].question}</h3>
+
+                                <div>
+                                    <h3>{obj[0].selectA}</h3>
+
+                                    <h3>{obj[0].selectB}</h3>
+                                </div>
+                            </div>
+                        );
+                    }
+
                 });
                 console.log(this.props.data);
 
@@ -54,7 +82,7 @@
     };
 
     $.ajax({
-            url: '/json/test.json',
+            url: '/json/base.json',
             dataType: 'json',
             success: function (data) {
                 drawAtree(data)
